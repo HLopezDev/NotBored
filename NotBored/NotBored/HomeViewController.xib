@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="NotBored" customModuleProvider="target">
+            <connections>
+                <outlet property="participantsTextField" destination="g94-Cl-L8t" id="8pd-y2-RIa"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="187" translatesAutoresizingMaskIntoConstraints="NO" id="kl1-ke-Kci">
+                    <rect key="frame" x="10" y="94" width="394" height="718"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Bored" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWS-Bg-co8">
+                            <rect key="frame" x="0.0" y="0.0" width="158.5" height="41"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="FSe-ZH-sOU">
+                            <rect key="frame" x="0.0" y="228" width="90.5" height="217"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Participants" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sit-YG-Pzs">
+                                    <rect key="frame" x="0.0" y="0.0" width="90.5" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g94-Cl-L8t">
+                                    <rect key="frame" x="0.0" y="28.5" width="32" height="188.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="tPH-cl-RM9">
+                            <rect key="frame" x="0.0" y="632" width="171" height="86"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnG-vY-gt3">
+                                    <rect key="frame" x="57.5" y="0.0" width="56" height="31"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Start">
+                                        <backgroundConfiguration key="background">
+                                            <color key="backgroundColor" systemColor="linkColor"/>
+                                        </backgroundConfiguration>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="startButton:" destination="-1" eventType="touchUpInside" id="qdn-rj-Y3D"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBc-Yf-dTr">
+                                    <rect key="frame" x="0.0" y="55" width="171" height="31"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Terms and Conditions">
+                                        <fontDescription key="titleFontDescription" style="UICTFontTextStyleHeadline"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="TermsandConditions:" destination="-1" eventType="touchUpInside" id="6GZ-pF-Soy"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="tPH-cl-RM9" firstAttribute="top" secondItem="kl1-ke-Kci" secondAttribute="top" constant="632" id="2nY-5l-pZY"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="kl1-ke-Kci" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="ADG-ei-RPz"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kl1-ke-Kci" secondAttribute="trailing" constant="10" id="ERp-Ni-KPb"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="kl1-ke-Kci" secondAttribute="bottom" constant="50" id="FwL-fM-8Dc"/>
+                <constraint firstItem="kl1-ke-Kci" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="gFT-9k-3nu"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="109.82142857142857"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

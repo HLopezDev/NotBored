@@ -102,6 +102,10 @@
                             </subviews>
                         </stackView>
                     </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="1di-OC-reu" secondAttribute="trailing" id="Y3n-Tp-eAA"/>
+                        <constraint firstItem="1di-OC-reu" firstAttribute="leading" secondItem="BiI-as-gHM" secondAttribute="leading" id="hnG-4M-zTc"/>
+                    </constraints>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

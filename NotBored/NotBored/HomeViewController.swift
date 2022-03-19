@@ -14,6 +14,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var participantsTextField: UITextField!
     
     override func viewDidLoad() {
@@ -23,23 +24,16 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func startButton(_ sender: Any) {
+        self.navigationController?.pushViewController(DetailViewController(), animated: true)
+        
+    }
+    
+    @IBAction func termsAndConditionsButton(_ sender: UIButton) {
         let vc = TermsAndConditionsViewController(nibName: "TermsAndConditionsViewController", bundle: nil)
         self.present(vc, animated: true)
     }
     
-    @IBAction func TermsandConditionsButton(_ sender: UIButton) {
-        let vc = TermsAndConditionsViewController(nibName: "TermsAndConditionsViewController", bundle: nil)
-        self.present(vc, animated: true)
-    }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

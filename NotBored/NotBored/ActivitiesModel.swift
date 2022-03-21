@@ -6,34 +6,106 @@
 //
 
 import Foundation
+import Alamofire
 
-enum ActivityType {
-    case education
-    case recreational
-    case social
-    case diy
-    case charity
-    case cooking
-    case relaxation
-    case music
-    case busywork
+struct ActivityType: Decodable {
+  let education: String
+  let recreational: String
+  let social: String
+  let diy: String
+  let charity: String
+  let cooking: String
+  let relaxation: String
+  let music: String
+  let busywork: String
+
+    enum CodingKeys: String, CodingKey {
+    case education = "education"
+    case recreational = "recreational"
+    case social = "social"
+    case diy = "diy"
+    case charity = "charity"
+    case cooking = "cooking"
+    case relaxation = "relaxation"
+    case music = "music"
+    case busywork = "busywork"
+  }
 }
 
-enum ActivityPrice {
-    case free
-    case low
-    case medium
-    case hight
-        
+struct ActivityPrice: Decodable {
+    let free: String
+    let low: String
+    let medium: String
+    let hight: String
+
+    enum CondingKeys: String, CodingKey {
+        case free
+        case low
+        case medium
+        case hight
+    }
 }
 
-struct ActivitiesModel {
+struct Activity: Decodable {
     
     let activity: String
-    let accesibility: Double
-    let type: ActivityType
+    var accesibility: Double?
+    let type: String
     let participants: Int
-    let price: ActivityPrice
+    let price: Double
     let link: String?
     let key: String
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        activity = try values.decode(String.self, forKey: .activity)
+        accesibility = try values.decodeIfPresent(Double.self, forKey: .accesibility)
+        type = try values.decode(String.self, forKey: .type)
+        participants = try values.decode(Int.self, forKey: .participants)
+        price = try values.decode(Double.self, forKey: .price)
+        link = try values.decodeIfPresent(String.self, forKey: .link)
+        key = try values.decode(String.self, forKey: .key)
+      }
+    
+    enum CodingKeys: String, CodingKey{
+        case activity = "activity"
+        case accesibility = "accesibility"
+        case type = "type"
+        case participants = "participants"
+        case price = "price"
+        case link = "link"
+        case key = "key"
+      }
+    
+    static func getActivity(completion: @escaping (Result<Activity, NetworkError>) -> Void) {
+        let url: String = "https://www.boredapi.com/api/activity/"
+        let request = AF.request(url)
+        request.responseDecodable(of: Activity.self) { (response) in
+            print(response)
+            guard let activity = response.value else {
+                return completion(.failure(.badDecodable))
+            }
+            return completion(.success(activity))
+        }
+    //      request.responseJSON { (data) in
+    //        print(data)
+    //      }
+        }
 }
+
+enum NetworkError: Error {
+    case badDecodable
+}
+
+
+//success({
+//    accessibility = "0.3";
+//    activity = "Go to a concert with local artists with some friends";
+//    key = 2211716;
+//    link = "";
+//    participants = 3;
+//    price = "0.4";
+//    type = social;
+//})
+
+

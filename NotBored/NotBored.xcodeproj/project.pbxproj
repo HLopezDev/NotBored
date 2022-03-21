@@ -21,6 +21,7 @@
 		3DFC8D8227E5137E00ACBAFB /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DFC8D8027E5137E00ACBAFB /* DetailViewController.xib */; };
 		3DFC8D8527E513B000ACBAFB /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFC8D8327E513B000ACBAFB /* ActivitiesViewController.swift */; };
 		3DFC8D8627E513B000ACBAFB /* ActivitiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DFC8D8427E513B000ACBAFB /* ActivitiesViewController.xib */; };
+		60EBEBCBB36D13594C640468 /* Pods_NotBored.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6707B1573C068F9987BA422E /* Pods_NotBored.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,9 @@
 		3DFC8D8027E5137E00ACBAFB /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		3DFC8D8327E513B000ACBAFB /* ActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
 		3DFC8D8427E513B000ACBAFB /* ActivitiesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesViewController.xib; sourceTree = "<group>"; };
+		6707B1573C068F9987BA422E /* Pods_NotBored.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotBored.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		85B8FFD28E045257EE4E3809 /* Pods-NotBored.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotBored.release.xcconfig"; path = "Target Support Files/Pods-NotBored/Pods-NotBored.release.xcconfig"; sourceTree = "<group>"; };
+		DEBDB64734AE4C0A3DF72094 /* Pods-NotBored.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotBored.debug.xcconfig"; path = "Target Support Files/Pods-NotBored/Pods-NotBored.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60EBEBCBB36D13594C640468 /* Pods_NotBored.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +63,8 @@
 			children = (
 				3DFC8D6027E4FBA000ACBAFB /* NotBored */,
 				3DFC8D5F27E4FBA000ACBAFB /* Products */,
+				FD95663FBF466D7DAA0476F2 /* Pods */,
+				EFFBAF2F9426E735FF83E216 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,6 +98,24 @@
 			path = NotBored;
 			sourceTree = "<group>";
 		};
+		EFFBAF2F9426E735FF83E216 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6707B1573C068F9987BA422E /* Pods_NotBored.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FD95663FBF466D7DAA0476F2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DEBDB64734AE4C0A3DF72094 /* Pods-NotBored.debug.xcconfig */,
+				85B8FFD28E045257EE4E3809 /* Pods-NotBored.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -98,9 +123,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3DFC8D7227E4FBA200ACBAFB /* Build configuration list for PBXNativeTarget "NotBored" */;
 			buildPhases = (
+				29F840B865F32A2B2BB0A2FE /* [CP] Check Pods Manifest.lock */,
 				3DFC8D5A27E4FBA000ACBAFB /* Sources */,
 				3DFC8D5B27E4FBA000ACBAFB /* Frameworks */,
 				3DFC8D5C27E4FBA000ACBAFB /* Resources */,
+				814177F77736FA609EE8C16F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -159,6 +186,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		29F840B865F32A2B2BB0A2FE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NotBored-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		814177F77736FA609EE8C16F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NotBored/Pods-NotBored-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NotBored/Pods-NotBored-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NotBored/Pods-NotBored-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3DFC8D5A27E4FBA000ACBAFB /* Sources */ = {
@@ -308,6 +377,7 @@
 		};
 		3DFC8D7327E4FBA200ACBAFB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEBDB64734AE4C0A3DF72094 /* Pods-NotBored.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -335,6 +405,7 @@
 		};
 		3DFC8D7427E4FBA200ACBAFB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85B8FFD28E045257EE4E3809 /* Pods-NotBored.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -77,11 +77,11 @@ struct Activity: Decodable {
         case key = "key"
       }
     
-    static func getActivity(completion: @escaping (Result<Activity, NetworkError>) -> Void) {
-        let url: String = "https://www.boredapi.com/api/activity/"
+    static func getActivity(_ participants: Int, completion: @escaping (Result<Activity, NetworkError>) -> Void) {
+        let url: String = "    http://www.boredapi.com/api/activity?participants=\(participants)"
         let request = AF.request(url)
         request.responseDecodable(of: Activity.self) { (response) in
-            print(response)
+            print("activity: \(response)")
             guard let activity = response.value else {
                 return completion(.failure(.badDecodable))
             }
@@ -90,9 +90,20 @@ struct Activity: Decodable {
     //      request.responseJSON { (data) in
     //        print(data)
     //      }
-        }
+    }
+//    static func getActivityList(completion: @escaping (Result<[Activity], NetworkError>) -> Void) {
+//        let url: String = "https://www.boredapi.com/api/activity/"
+//        let request = AF.request(url)
+//        request.responseDecodable(of: [Activity].self) { (response) in
+//            print("lista: \(response)")
+//            guard let activity = response.value else {
+//                return completion(.failure(.badDecodable))
+//            }
+//            return completion(.success(activity))
+//        }
+//    }
 }
-
+        
 enum NetworkError: Error {
     case badDecodable
 }

@@ -22,6 +22,10 @@
 		3DFC8D8527E513B000ACBAFB /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFC8D8327E513B000ACBAFB /* ActivitiesViewController.swift */; };
 		3DFC8D8627E513B000ACBAFB /* ActivitiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DFC8D8427E513B000ACBAFB /* ActivitiesViewController.xib */; };
 		60EBEBCBB36D13594C640468 /* Pods_NotBored.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6707B1573C068F9987BA422E /* Pods_NotBored.framework */; };
+		7787020027E90F51008F16FF /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778701FE27E90F51008F16FF /* ActivityTableViewCell.swift */; };
+		7787020127E90F51008F16FF /* ActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 778701FF27E90F51008F16FF /* ActivityTableViewCell.xib */; };
+		77DF3BA627E907AC0041FC19 /* ActivitiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77DF3BA427E907AC0041FC19 /* ActivitiesTableViewController.swift */; };
+		77DF3BA727E907AC0041FC19 /* ActivitiesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77DF3BA527E907AC0041FC19 /* ActivitiesTableViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +46,10 @@
 		3DFC8D8327E513B000ACBAFB /* ActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
 		3DFC8D8427E513B000ACBAFB /* ActivitiesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesViewController.xib; sourceTree = "<group>"; };
 		6707B1573C068F9987BA422E /* Pods_NotBored.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotBored.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		778701FE27E90F51008F16FF /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
+		778701FF27E90F51008F16FF /* ActivityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityTableViewCell.xib; sourceTree = "<group>"; };
+		77DF3BA427E907AC0041FC19 /* ActivitiesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTableViewController.swift; sourceTree = "<group>"; };
+		77DF3BA527E907AC0041FC19 /* ActivitiesTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesTableViewController.xib; sourceTree = "<group>"; };
 		85B8FFD28E045257EE4E3809 /* Pods-NotBored.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotBored.release.xcconfig"; path = "Target Support Files/Pods-NotBored/Pods-NotBored.release.xcconfig"; sourceTree = "<group>"; };
 		DEBDB64734AE4C0A3DF72094 /* Pods-NotBored.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotBored.debug.xcconfig"; path = "Target Support Files/Pods-NotBored/Pods-NotBored.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +102,10 @@
 				3DFC8D6A27E4FBA200ACBAFB /* Assets.xcassets */,
 				3DFC8D6C27E4FBA200ACBAFB /* LaunchScreen.storyboard */,
 				3DFC8D6F27E4FBA200ACBAFB /* Info.plist */,
+				77DF3BA427E907AC0041FC19 /* ActivitiesTableViewController.swift */,
+				77DF3BA527E907AC0041FC19 /* ActivitiesTableViewController.xib */,
+				778701FE27E90F51008F16FF /* ActivityTableViewCell.swift */,
+				778701FF27E90F51008F16FF /* ActivityTableViewCell.xib */,
 			);
 			path = NotBored;
 			sourceTree = "<group>";
@@ -112,7 +124,6 @@
 				DEBDB64734AE4C0A3DF72094 /* Pods-NotBored.debug.xcconfig */,
 				85B8FFD28E045257EE4E3809 /* Pods-NotBored.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -178,7 +189,9 @@
 			files = (
 				3DFC8D7E27E5034700ACBAFB /* TermsAndConditionsViewController.xib in Resources */,
 				3DFC8D6E27E4FBA200ACBAFB /* LaunchScreen.storyboard in Resources */,
+				7787020127E90F51008F16FF /* ActivityTableViewCell.xib in Resources */,
 				3DFC8D8227E5137E00ACBAFB /* DetailViewController.xib in Resources */,
+				77DF3BA727E907AC0041FC19 /* ActivitiesTableViewController.xib in Resources */,
 				3DFC8D6B27E4FBA200ACBAFB /* Assets.xcassets in Resources */,
 				3DFC8D7827E4FBFC00ACBAFB /* HomeViewController.xib in Resources */,
 				3DFC8D8627E513B000ACBAFB /* ActivitiesViewController.xib in Resources */,
@@ -236,10 +249,12 @@
 			files = (
 				3DFC8D7A27E4FFB800ACBAFB /* ActivitiesModel.swift in Sources */,
 				3DFC8D6627E4FBA000ACBAFB /* ViewController.swift in Sources */,
+				7787020027E90F51008F16FF /* ActivityTableViewCell.swift in Sources */,
 				3DFC8D7D27E5034700ACBAFB /* TermsAndConditionsViewController.swift in Sources */,
 				3DFC8D6227E4FBA000ACBAFB /* AppDelegate.swift in Sources */,
 				3DFC8D6427E4FBA000ACBAFB /* SceneDelegate.swift in Sources */,
 				3DFC8D8527E513B000ACBAFB /* ActivitiesViewController.swift in Sources */,
+				77DF3BA627E907AC0041FC19 /* ActivitiesTableViewController.swift in Sources */,
 				3DFC8D7727E4FBFC00ACBAFB /* HomeViewController.swift in Sources */,
 				3DFC8D8127E5137E00ACBAFB /* DetailViewController.swift in Sources */,
 			);

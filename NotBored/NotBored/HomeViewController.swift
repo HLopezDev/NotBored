@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func startButton(_ sender: Any) {
-        self.navigationController?.pushViewController(DetailViewController(), animated: true)
+        self.navigationController?.pushViewController(ActivitiesTableViewController(), animated: true)
 //        Activity.getActivity(completion: { result in
 //            switch result {
 //                case .failure(let error):

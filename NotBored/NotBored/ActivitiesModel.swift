@@ -78,7 +78,7 @@ struct Activity: Decodable {
       }
     
     static func getActivity(_ participants: Int, completion: @escaping (Result<Activity, NetworkError>) -> Void) {
-        let url: String = "    http://www.boredapi.com/api/activity?participants=\(participants)"
+        let url: String = "https://www.boredapi.com/api/activity?participants=\(participants)"
         let request = AF.request(url)
         request.responseDecodable(of: Activity.self) { (response) in
             print("activity: \(response)")

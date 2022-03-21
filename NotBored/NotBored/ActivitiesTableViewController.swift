@@ -35,7 +35,7 @@ class ActivitiesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = activitiesTableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath) as! ActivityTableViewCell
-        let activity = Activity.getActivity(completion: { result in
+        let activity = Activity.getActivity(1, completion: { result in
             switch result {
             case .failure(let error):
                 print(error)
@@ -46,6 +46,10 @@ class ActivitiesTableViewController: UITableViewController {
         })
         return cell
             }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.navigationController?.pushViewController(DetailViewController(), animated: true)
+    }
         }
     
 

@@ -116,6 +116,7 @@ struct Activity: Decodable {
                 }
             })
         }
+        sleep(2)
         print("la primera de las actividades es: \(activities)")
         return activities
     }

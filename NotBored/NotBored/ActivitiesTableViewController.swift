@@ -17,6 +17,7 @@ class ActivitiesTableViewController: UITableViewController {
         print("Aqui hace el llamado viewDidLoad")
         data = getData(participants)
         registerTableViewCells()
+        activitiesTableView.reloadData()
     }
     
     func registerTableViewCells() {

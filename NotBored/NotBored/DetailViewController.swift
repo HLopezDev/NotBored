@@ -31,7 +31,7 @@ class DetailViewController: UIViewController {
     
     func setDetailView() {
         
-        Activity.getActivity(1, completion: { result in
+        Activity.getActivity(1, type: .cooking, completion: { result in
             switch result {
             case .failure(let error):
                 print(error)

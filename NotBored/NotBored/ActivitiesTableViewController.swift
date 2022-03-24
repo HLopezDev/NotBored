@@ -8,17 +8,18 @@
 import UIKit
 
 class ActivitiesTableViewController: UITableViewController {
-    var activitiesModel = ActivitiesModel()
+//    var activitiesModel = ActivitiesModel()
     var categories : [String] = []
     var category: String = ""
-    var participants: Int = 0
-    var vcDetail = DetailViewController()
+//    var participants: Int = 0
+    var vcDetail: DetailViewController!
     @IBOutlet weak var activitiesTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerTableViewCells()
-        categories = activitiesModel.getCategory()
+        categories = ActivitiesModel.getCategory()
+        print("In Detail viewdidload \(vcDetail.participants)")
     }
     
     func registerTableViewCells() {
@@ -39,6 +40,7 @@ class ActivitiesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = activitiesTableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath) as! ActivityTableViewCell
         cell.typeLabel.text = categories[indexPath.row]
+        
         return cell
     }
     
@@ -46,6 +48,8 @@ class ActivitiesTableViewController: UITableViewController {
 //        let vc = DetailViewController()
         category = categories[indexPath.row]
         vcDetail.type = category
-        self.navigationController?.pushViewController(DetailViewController(), animated: true)
+//        vcDetail.participants = participants
+        print("In tap tableview \(vcDetail.type) y participants \(vcDetail.participants)")
+        self.navigationController?.pushViewController(vcDetail, animated: true)
     }
 }

@@ -16,8 +16,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var participantsTextField: UITextField!
     
-    var vcDetail: DetailViewController!
-    
+    var vc: ActivitiesTableViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
         participantsTextField.delegate = self
@@ -31,10 +30,10 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func startButton(_ sender: Any) {
-        let vc = ActivitiesTableViewController() 
-//        vcDetail = DetailViewController()
-//        vc.participants = getParticipants()
-        print(participantsTextField.text)
+        vc = ActivitiesTableViewController()
+        vc.vcDetail = DetailViewController()
+        getParticipants()
+        print("In startButtonPress\(participantsTextField.text ?? "fallo" )")
         navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -44,10 +43,11 @@ class HomeViewController: UIViewController {
         self.present(vc, animated: true)
     }
     
-    func getParticipants() -> Int {
+    func getParticipants() {
         let numero = participantsTextField.text ?? "0"
-        vcDetail.participants = Int(numero) ?? 0
-        return Int(numero) ?? 0
+        vc.vcDetail.participants = Int(numero) ?? 0
+        return
+//        return Int(numero) ?? 0
 //        return 1
     }
     

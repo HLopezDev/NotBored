@@ -8,9 +8,10 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    var activitiesModel = ActivitiesModel()
-    var homeVC = HomeViewController()
-    var activitiesTableView = ActivitiesTableViewController()
+//    var activitiesModel = ActivitiesModel()
+//    var homeVC = HomeViewController()
+//    var activitiesTableView = ActivitiesTableViewController()
+    var activityCategory: ActivityType!
     var type: String = ""
     var participants: Int = 0
 
@@ -24,36 +25,39 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        type = activitiesTableView.category
         print(participants)
-        setDetailView(participants: participants, type: type)
+        ActivityData(participants: participants, type: type)
+        
         }
     
     @IBAction func tryAnotherButton(_ sender: Any) {
 //        setDetailView()
     }
 
-    func setDetailView(participants: Int, type: String) {
-        getData(participants, type: type, completion: { result in
+    func showActivity(_ activity: Activity) {
+        self.activityLabel.text = activity.activity
+        self.participantsLabel.text = String(activity.participants)
+        self.priceLabel.text = String(activity.price)
+        self.linkLabel.text = activity.link
+        self.typeLabel.text = activity.type
+        if let accesibility = activity.accesibility {
+            
+            self.accesibilityLabel.text = String(accesibility)
+        } else {
+            self.accesibilityLabel.isHidden = true
+            self.accesibilityTitleLabel.isHidden = true
+        }
+        print("showActivity\(activityLabel)")
+    }
+    
+    func ActivityData(participants: Int, type: String) {
+        Activity.getData(participants, type: type, completion: { result in
                 switch result {
                 case .failure(let error):
                     print(error)
                 case .success(let activity):
                     print(activity)
-                    
-                    self.activityLabel.text = activity.activity
-                    self.participantsLabel.text = String(activity.participants)
-                    self.priceLabel.text = String(activity.price)
-                    self.linkLabel.text = activity.link
-                    self.typeLabel.text = activity.type
-                    if let accesibility = activity.accesibility {
-
-                        self.accesibilityLabel.text = String(accesibility)
-                    } else {
-                        self.accesibilityLabel.isHidden = true
-                        self.accesibilityTitleLabel.isHidden = true
-                    }
+                    self.showActivity(activity)
                     
                 }
             })

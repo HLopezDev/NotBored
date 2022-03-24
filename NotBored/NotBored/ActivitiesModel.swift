@@ -9,58 +9,48 @@ import Alamofire
 
 class ActivitiesModel {
     var activitiesType: [ActivityType] = []
-    var activityData: Activity?
-    var vc: ActivitiesTableViewController?
+//    var activityData: Activity?
+//    var vc: ActivitiesTableViewController?
     
-    func getCategory() -> [String]{
+    static func getCategory() -> [String]{
         ActivityType.allCases.map( { $0.rawValue })
     }
-struct ActivityPrice: Decodable {
-    let free: String
-    let low: String
-    let medium: String
-    let hight: String
-
-    enum CondingKeys: String, CodingKey {
-        case free
-        case low
-        case medium
-        case hight
+    struct ActivityPrice: Decodable {
+        let free: String
+        let low: String
+        let medium: String
+        let hight: String
+        
+        enum CondingKeys: String, CodingKey {
+            case free
+            case low
+            case medium
+            case hight
+        }
     }
 }
-//    func getActivity(_ participants: Int, type: String)-> Activity? {
-//        let url: String = "https://www.boredapi.com/api/activity?participants=\(participants)&type=\(type)"
-//        let request = AF.request(url)
-//        request.response { (response) in
-//            if let data = response.data {
-//                do {
-//                    self.activityData = try JSONDecoder().decode(Activity.self, from: data)
-//                    print(self.activityData)
-//                } catch let error {
-//                    print(error)
-//                }
-//            }
-//        }
-//        return activityData
-//    }
-}
-
-func getData(_ participants: Int, type: String,  completion: @escaping (Result<Activity, NetworkError>) -> Void) {
-      let url: String = "https://www.boredapi.com/api/activity?participants=\(participants)&type=\(type)"
-      let request = AF.request(url)
-      request.responseDecodable(of: Activity.self) { (response) in
-//            print("activity: \(response)")
-          guard let activity = response.value else {
-              return completion(.failure(.badDecodable))
-          }
-          return completion(.success(activity))
-      }
-  }
-
-enum NetworkError: Error {
-    case badDecodable
-}
-
+    //    func getActivity(_ participants: Int, type: String)-> Activity? {
+    //        let url: String = "https://www.boredapi.com/api/activity?participants=\(participants)&type=\(type)"
+    //        let request = AF.request(url)
+    //        request.response { (response) in
+    //            if let data = response.data {
+    //                do {
+    //                    self.activityData = try JSONDecoder().decode(Activity.self, from: data)
+    //                    print(self.activityData)
+    //                } catch let error {
+    //                    print(error)
+    //                }
+    //            }
+    //        }
+    //        return activityData
+    //    }
+    
+    
+    
+    enum NetworkError: Error {
+        case badDecodable
+    }
+    
 struct Activity: Decodable, Equatable {
     
     let activity: String
@@ -80,18 +70,32 @@ struct Activity: Decodable, Equatable {
         price = try values.decode(Double.self, forKey: .price)
         link = try values.decodeIfPresent(String.self, forKey: .link)
         key = try values.decode(String.self, forKey: .key)
-      }
+    }
     
-    enum CodingKeys: String, CodingKey{
-        case activity = "activity"
-        case accesibility = "accesibility"
-        case type = "type"
-        case participants = "participants"
-        case price = "price"
-        case link = "link"
-        case key = "key"
-      }
+    static func getData(_ participants: Int, type: String,  completion: @escaping (Result<Activity, NetworkError>) -> Void) {
+        let url: String = "https://www.boredapi.com/api/activity?participants=\(participants)&type=\(type)"
+        let request = AF.request(url)
+        request.responseDecodable(of: Activity.self) { (response) in
+            //            print("activity: \(response)")
+            guard let activity = response.value else {
+                return completion(.failure(.badDecodable))
+            }
+            print("In get Data \(activity)")
+            return completion(.success(activity))
+        }
+    }
 }
+
+enum CodingKeys: String, CodingKey{
+    case activity = "activity"
+    case accesibility = "accesibility"
+    case type = "type"
+    case participants = "participants"
+    case price = "price"
+    case link = "link"
+    case key = "key"
+}
+
 
 enum ActivityType: String, CaseIterable {
     case education = "education"
@@ -104,5 +108,6 @@ enum ActivityType: String, CaseIterable {
     case music = "music"
     case busywork = "busywork"
     case random = "random"
-
+    
 }
+

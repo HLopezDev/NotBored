@@ -8,18 +8,8 @@
 import Foundation
 import Alamofire
 
-struct ActivityType: Decodable {
-  let education: String
-  let recreational: String
-  let social: String
-  let diy: String
-  let charity: String
-  let cooking: String
-  let relaxation: String
-  let music: String
-  let busywork: String
-
-    enum CodingKeys: String, CodingKey {
+enum ActivityType: String, CaseIterable {
+    
     case education = "education"
     case recreational = "recreational"
     case social = "social"
@@ -29,8 +19,30 @@ struct ActivityType: Decodable {
     case relaxation = "relaxation"
     case music = "music"
     case busywork = "busywork"
-  }
 }
+//struct ActivityType: Decodable {
+//  let education: String
+//  let recreational: String
+//  let social: String
+//  let diy: String
+//  let charity: String
+//  let cooking: String
+//  let relaxation: String
+//  let music: String
+//  let busywork: String
+//
+//    enum CodingKeys: String, CodingKey {
+//    case education = "education"
+//    case recreational = "recreational"
+//    case social = "social"
+//    case diy = "diy"
+//    case charity = "charity"
+//    case cooking = "cooking"
+//    case relaxation = "relaxation"
+//    case music = "music"
+//    case busywork = "busywork"
+//  }
+//}
 
 struct ActivityPrice: Decodable {
     let free: String
@@ -77,32 +89,40 @@ struct Activity: Decodable {
         case key = "key"
       }
     
-    static func getActivity(_ participants: Int, completion: @escaping (Result<Activity, NetworkError>) -> Void) {
-        let url: String = "https://www.boredapi.com/api/activity?participants=\(participants)"
+    static func getActivity(_ participants: Int, type: ActivityType,  completion: @escaping (Result<Activity, NetworkError>) -> Void) {
+        let url: String = "https://www.boredapi.com/api/activity?participants=\(participants)&type=\(type.rawValue)"
         let request = AF.request(url)
         request.responseDecodable(of: Activity.self) { (response) in
-            print("activity: \(response)")
+//            print("activity: \(response)")
             guard let activity = response.value else {
                 return completion(.failure(.badDecodable))
             }
             return completion(.success(activity))
         }
-    //      request.responseJSON { (data) in
-    //        print(data)
-    //      }
+    
     }
-//    static func getActivityList(completion: @escaping (Result<[Activity], NetworkError>) -> Void) {
-//        let url: String = "https://www.boredapi.com/api/activity/"
-//        let request = AF.request(url)
-//        request.responseDecodable(of: [Activity].self) { (response) in
-//            print("lista: \(response)")
-//            guard let activity = response.value else {
-//                return completion(.failure(.badDecodable))
-//            }
-//            return completion(.success(activity))
-//        }
-//    }
+    
+    static func getActivityList(_ participants: Int) -> [Activity] {
+        var activities: [Activity] = []
+        for type in ActivityType.allCases {
+            getActivity(participants, type: type, completion: { result in
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .success(let activity):
+                    print(activity)
+                    print("Esta armando el array")
+                    activities.append(activity)
+                }
+            })
+        }
+        sleep(2)
+        print("la primera de las actividades es: \(activities)")
+        return activities
+    }
+//    TODO: Configuring an asyncronous call for this methods. 
 }
+
         
 enum NetworkError: Error {
     case badDecodable

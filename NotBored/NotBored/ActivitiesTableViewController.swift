@@ -8,11 +8,16 @@
 import UIKit
 
 class ActivitiesTableViewController: UITableViewController {
-        
+    var participants: Int = 0
+    var data: ([Activity], Int) = ([], 0)
     @IBOutlet weak var activitiesTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Aqui hace el llamado viewDidLoad")
+        data = getData(participants)
         registerTableViewCells()
+        activitiesTableView.reloadData()
     }
     
     func registerTableViewCells() {
@@ -28,29 +33,40 @@ class ActivitiesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 9
+        print("number of cells \(data.1)")
+        return data.1
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = activitiesTableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath) as! ActivityTableViewCell
-        let activity = Activity.getActivity(1, completion: { result in
-            switch result {
-            case .failure(let error):
-                print(error)
-            case .success(let activity):
-                print(activity)
-                cell.update(activity: activity)
-            }
-        })
+        
+//        Activity.getActivity(1, type: .cooking, completion: { result in
+//            switch result {
+//            case .failure(let error):
+//                print(error)
+//            case .success(let activity):
+//                print(activity)
+//            }
+//        })
+        let activity = data.0[indexPath.row]
+        cell.update(activity: activity)
         return cell
-            }
+}
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.navigationController?.pushViewController(DetailViewController(), animated: true)
     }
-        }
+    
+    func getData(_ participants: Int ) -> ( data: [Activity], count: Int ){
+        let data = Activity.getActivityList(participants)
+        let number = data.count
+        print("numero getData \(number)")
+        return (data, number)
+        
+    }
+    
+}
     
 
     /*

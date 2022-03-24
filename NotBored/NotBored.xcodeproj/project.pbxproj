@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3DDEAD2827ED1A2F001F9009 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDEAD2727ED1A2F001F9009 /* DataService.swift */; };
 		3DFC8D6227E4FBA000ACBAFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFC8D6127E4FBA000ACBAFB /* AppDelegate.swift */; };
 		3DFC8D6427E4FBA000ACBAFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFC8D6327E4FBA000ACBAFB /* SceneDelegate.swift */; };
 		3DFC8D6627E4FBA000ACBAFB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFC8D6527E4FBA000ACBAFB /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3DDEAD2727ED1A2F001F9009 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		3DFC8D5E27E4FBA000ACBAFB /* NotBored.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotBored.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DFC8D6127E4FBA000ACBAFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DFC8D6327E4FBA000ACBAFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				77DF3BA527E907AC0041FC19 /* ActivitiesTableViewController.xib */,
 				778701FE27E90F51008F16FF /* ActivityTableViewCell.swift */,
 				778701FF27E90F51008F16FF /* ActivityTableViewCell.xib */,
+				3DDEAD2727ED1A2F001F9009 /* DataService.swift */,
 			);
 			path = NotBored;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				7787020027E90F51008F16FF /* ActivityTableViewCell.swift in Sources */,
 				3DFC8D7D27E5034700ACBAFB /* TermsAndConditionsViewController.swift in Sources */,
 				3DFC8D6227E4FBA000ACBAFB /* AppDelegate.swift in Sources */,
+				3DDEAD2827ED1A2F001F9009 /* DataService.swift in Sources */,
 				3DFC8D6427E4FBA000ACBAFB /* SceneDelegate.swift in Sources */,
 				3DFC8D8527E513B000ACBAFB /* ActivitiesViewController.swift in Sources */,
 				77DF3BA627E907AC0041FC19 /* ActivitiesTableViewController.swift in Sources */,

@@ -11,7 +11,7 @@ class DetailViewController: UIViewController {
 //    var activitiesModel = ActivitiesModel()
 //    var homeVC = HomeViewController()
 //    var activitiesTableView = ActivitiesTableViewController()
-    var activityCategory: ActivityType!
+//    var activityCategory: ActivityType!
     var type: String = ""
     var participants: Int = 0
 
@@ -23,15 +23,23 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var accesibilityTitleLabel: UILabel!
     
+    @IBOutlet weak var priceTitleLabel: UILabel!
+    @IBOutlet weak var participantsTitleLabel: UILabel!
+    
+       
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(participants)
         ActivityData(participants: participants, type: type)
-        
+//        print(participants)
         }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ActivityData(participants: participants, type: type)
+    }
+    
     @IBAction func tryAnotherButton(_ sender: Any) {
-//        setDetailView()
+        ActivityData(participants: participants, type: type)
     }
 
     func showActivity(_ activity: Activity) {
@@ -50,16 +58,41 @@ class DetailViewController: UIViewController {
         print("showActivity\(activityLabel)")
     }
     
+    func noActivityAvailable() {
+        self.activityLabel.text = "Sorry! No activity found with the specified parameters, try again"
+        self.participantsLabel.isHidden = true
+        self.priceLabel.isHidden = true
+        self.linkLabel.isHidden = true
+        self.typeLabel.isHidden = true
+        self.accesibilityLabel.isHidden = true
+        self.accesibilityTitleLabel.isHidden = true
+        self.participantsTitleLabel.isHidden = true
+        self.priceTitleLabel.isHidden = true
+    }
+    
     func ActivityData(participants: Int, type: String) {
-        Activity.getData(participants, type: type, completion: { result in
+        DataService.getData(participants, type: type, completion: { result in
                 switch result {
                 case .failure(let error):
+                    self.noActivityAvailable()
                     print(error)
                 case .success(let activity):
+                    self.prepareUI()
                     print(activity)
                     self.showActivity(activity)
                     
                 }
             })
         }
+    
+    func prepareUI() {
+        self.participantsLabel.isHidden = false
+        self.priceLabel.isHidden = false
+        self.linkLabel.isHidden = false
+        self.typeLabel.isHidden = false
+        self.accesibilityLabel.isHidden = false
+        self.accesibilityTitleLabel.isHidden = false
+        self.participantsTitleLabel.isHidden = false
+        self.priceTitleLabel.isHidden = false
+    }
 }

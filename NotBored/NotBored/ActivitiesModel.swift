@@ -8,56 +8,32 @@ import Foundation
 import Alamofire
 
 class ActivitiesModel {
-    var activitiesType: [ActivityType] = []
-//    var activityData: Activity?
-//    var vc: ActivitiesTableViewController?
     
     static func getCategory() -> [String]{
         ActivityType.allCases.map( { $0.rawValue })
     }
-    struct ActivityPrice: Decodable {
-        let free: String
-        let low: String
-        let medium: String
-        let hight: String
-        
-        enum CondingKeys: String, CodingKey {
-            case free
-            case low
-            case medium
-            case hight
-        }
+    
+    enum ActivityType: String, CaseIterable {
+        case education = "education"
+        case recreational = "recreational"
+        case social = "social"
+        case diy = "diy"
+        case charity = "charity"
+        case cooking = "cooking"
+        case relaxation = "relaxation"
+        case music = "music"
+        case busywork = "busywork"
+        case random = "random"
     }
 }
-    //    func getActivity(_ participants: Int, type: String)-> Activity? {
-    //        let url: String = "https://www.boredapi.com/api/activity?participants=\(participants)&type=\(type)"
-    //        let request = AF.request(url)
-    //        request.response { (response) in
-    //            if let data = response.data {
-    //                do {
-    //                    self.activityData = try JSONDecoder().decode(Activity.self, from: data)
-    //                    print(self.activityData)
-    //                } catch let error {
-    //                    print(error)
-    //                }
-    //            }
-    //        }
-    //        return activityData
-    //    }
-    
-    
-    
-    enum NetworkError: Error {
-        case badDecodable
-    }
-    
+
 struct Activity: Decodable, Equatable {
     
     let activity: String
     var accesibility: Double?
     let type: String
     let participants: Int
-    let price: Double
+    var price: String = ""
     let link: String?
     let key: String
     
@@ -67,21 +43,25 @@ struct Activity: Decodable, Equatable {
         accesibility = try values.decodeIfPresent(Double.self, forKey: .accesibility)
         type = try values.decode(String.self, forKey: .type)
         participants = try values.decode(Int.self, forKey: .participants)
-        price = try values.decode(Double.self, forKey: .price)
+        let temPrice = try values.decode(Double.self, forKey: .price)
         link = try values.decodeIfPresent(String.self, forKey: .link)
         key = try values.decode(String.self, forKey: .key)
+        price = getCost(temPrice)
     }
     
-    static func getData(_ participants: Int, type: String,  completion: @escaping (Result<Activity, NetworkError>) -> Void) {
-        let url: String = "https://www.boredapi.com/api/activity?participants=\(participants)&type=\(type)"
-        let request = AF.request(url)
-        request.responseDecodable(of: Activity.self) { (response) in
-            //            print("activity: \(response)")
-            guard let activity = response.value else {
-                return completion(.failure(.badDecodable))
-            }
-            print("In get Data \(activity)")
-            return completion(.success(activity))
+    
+    
+    
+    func getCost(_ value: Double) -> String {
+        switch value {
+            case 0:
+            return "Free"
+        case 0.1...0.3:
+                return "Low"
+        case 0.4...0.6:
+                return "Medium"
+        default:
+                return "High"
         }
     }
 }
@@ -97,17 +77,4 @@ enum CodingKeys: String, CodingKey{
 }
 
 
-enum ActivityType: String, CaseIterable {
-    case education = "education"
-    case recreational = "recreational"
-    case social = "social"
-    case diy = "diy"
-    case charity = "charity"
-    case cooking = "cooking"
-    case relaxation = "relaxation"
-    case music = "music"
-    case busywork = "busywork"
-    case random = "random"
-    
-}
-
+   

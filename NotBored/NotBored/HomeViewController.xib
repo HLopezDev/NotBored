@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -21,8 +21,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="kl1-ke-Kci">
-                    <rect key="frame" x="10" y="94" width="394" height="718"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kl1-ke-Kci">
+                    <rect key="frame" x="10" y="54" width="394" height="798"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Bored" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWS-Bg-co8">
                             <rect key="frame" x="118" y="0.0" width="158.5" height="41"/>
@@ -31,7 +31,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="FSe-ZH-sOU">
-                            <rect key="frame" x="5" y="268.5" width="384" height="108"/>
+                            <rect key="frame" x="5" y="308.5" width="384" height="108"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Participants" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sit-YG-Pzs">
                                     <rect key="frame" x="0.0" y="0.0" width="384" height="50"/>
@@ -50,7 +50,7 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="tPH-cl-RM9">
-                            <rect key="frame" x="5" y="604" width="384" height="114"/>
+                            <rect key="frame" x="5" y="684" width="384" height="114"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnG-vY-gt3">
                                     <rect key="frame" x="92" y="0.0" width="200" height="50"/>
@@ -92,11 +92,26 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="BackgroundColor"/>
             <constraints>
-                <constraint firstItem="kl1-ke-Kci" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="ADG-ei-RPz"/>
+                <constraint firstItem="kl1-ke-Kci" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="ADG-ei-RPz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kl1-ke-Kci" secondAttribute="trailing" constant="10" id="ERp-Ni-KPb"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="kl1-ke-Kci" secondAttribute="bottom" constant="50" id="FwL-fM-8Dc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="kl1-ke-Kci" secondAttribute="bottom" constant="10" id="FwL-fM-8Dc"/>
                 <constraint firstItem="kl1-ke-Kci" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="gFT-9k-3nu"/>
             </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="kl1-ke-Kci"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=compact-widthClass=regular">
+                <mask key="subviews">
+                    <include reference="kl1-ke-Kci"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="kl1-ke-Kci"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="131.8840579710145" y="109.82142857142857"/>
         </view>
     </objects>

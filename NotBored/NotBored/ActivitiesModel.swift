@@ -4,46 +4,17 @@
 //
 //  Created by Hector Orlando Lopez Orozco on 18/03/22.
 //
-
 import Foundation
 import Alamofire
 
-enum ActivityType: String, CaseIterable {
+class ActivitiesModel {
+    var activitiesType: [ActivityType] = []
+    var activityData: Activity?
+    var vc: ActivitiesTableViewController?
     
-    case education = "education"
-    case recreational = "recreational"
-    case social = "social"
-    case diy = "diy"
-    case charity = "charity"
-    case cooking = "cooking"
-    case relaxation = "relaxation"
-    case music = "music"
-    case busywork = "busywork"
-}
-//struct ActivityType: Decodable {
-//  let education: String
-//  let recreational: String
-//  let social: String
-//  let diy: String
-//  let charity: String
-//  let cooking: String
-//  let relaxation: String
-//  let music: String
-//  let busywork: String
-//
-//    enum CodingKeys: String, CodingKey {
-//    case education = "education"
-//    case recreational = "recreational"
-//    case social = "social"
-//    case diy = "diy"
-//    case charity = "charity"
-//    case cooking = "cooking"
-//    case relaxation = "relaxation"
-//    case music = "music"
-//    case busywork = "busywork"
-//  }
-//}
-
+    func getCategory() -> [String]{
+        ActivityType.allCases.map( { $0.rawValue })
+    }
 struct ActivityPrice: Decodable {
     let free: String
     let low: String
@@ -57,8 +28,40 @@ struct ActivityPrice: Decodable {
         case hight
     }
 }
+//    func getActivity(_ participants: Int, type: String)-> Activity? {
+//        let url: String = "https://www.boredapi.com/api/activity?participants=\(participants)&type=\(type)"
+//        let request = AF.request(url)
+//        request.response { (response) in
+//            if let data = response.data {
+//                do {
+//                    self.activityData = try JSONDecoder().decode(Activity.self, from: data)
+//                    print(self.activityData)
+//                } catch let error {
+//                    print(error)
+//                }
+//            }
+//        }
+//        return activityData
+//    }
+}
 
-struct Activity: Decodable {
+func getData(_ participants: Int, type: String,  completion: @escaping (Result<Activity, NetworkError>) -> Void) {
+      let url: String = "https://www.boredapi.com/api/activity?participants=\(participants)&type=\(type)"
+      let request = AF.request(url)
+      request.responseDecodable(of: Activity.self) { (response) in
+//            print("activity: \(response)")
+          guard let activity = response.value else {
+              return completion(.failure(.badDecodable))
+          }
+          return completion(.success(activity))
+      }
+  }
+
+enum NetworkError: Error {
+    case badDecodable
+}
+
+struct Activity: Decodable, Equatable {
     
     let activity: String
     var accesibility: Double?
@@ -88,55 +91,18 @@ struct Activity: Decodable {
         case link = "link"
         case key = "key"
       }
-    
-    static func getActivity(_ participants: Int, type: ActivityType,  completion: @escaping (Result<Activity, NetworkError>) -> Void) {
-        let url: String = "https://www.boredapi.com/api/activity?participants=\(participants)&type=\(type.rawValue)"
-        let request = AF.request(url)
-        request.responseDecodable(of: Activity.self) { (response) in
-//            print("activity: \(response)")
-            guard let activity = response.value else {
-                return completion(.failure(.badDecodable))
-            }
-            return completion(.success(activity))
-        }
-    
-    }
-    
-    static func getActivityList(_ participants: Int) -> [Activity] {
-        var activities: [Activity] = []
-        for type in ActivityType.allCases {
-            getActivity(participants, type: type, completion: { result in
-                switch result {
-                case .failure(let error):
-                    print(error)
-                case .success(let activity):
-                    print(activity)
-                    print("Esta armando el array")
-                    activities.append(activity)
-                }
-            })
-        }
-        sleep(2)
-        print("la primera de las actividades es: \(activities)")
-        return activities
-    }
-//    TODO: Configuring an asyncronous call for this methods. 
 }
 
-        
-enum NetworkError: Error {
-    case badDecodable
+enum ActivityType: String, CaseIterable {
+    case education = "education"
+    case recreational = "recreational"
+    case social = "social"
+    case diy = "diy"
+    case charity = "charity"
+    case cooking = "cooking"
+    case relaxation = "relaxation"
+    case music = "music"
+    case busywork = "busywork"
+    case random = "random"
+
 }
-
-
-//success({
-//    accessibility = "0.3";
-//    activity = "Go to a concert with local artists with some friends";
-//    key = 2211716;
-//    link = "";
-//    participants = 3;
-//    price = "0.4";
-//    type = social;
-//})
-
-

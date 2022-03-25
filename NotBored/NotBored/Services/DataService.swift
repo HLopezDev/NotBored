@@ -18,7 +18,6 @@ class DataService {
             guard let activity = response.value else {
                 return completion(.failure(.badDecodable))
             }
-            print("In get Data \(activity)")
             return completion(.success(activity))
         }
     }
@@ -30,7 +29,6 @@ class DataService {
             guard let activity = response.value else {
                 return completion(.failure(.badDecodable))
             }
-            print("In get Data \(activity)")
             return completion(.success(activity))
         }
     }

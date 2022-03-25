@@ -8,10 +8,8 @@
 import UIKit
 
 class ActivitiesTableViewController: UITableViewController {
-//    var activitiesModel = ActivitiesModel()
     var categories : [String] = []
     var category: String = ""
-//    var participants: Int = 0
     var vcDetail: DetailViewController!
     @IBOutlet weak var activitiesTableView: UITableView!
     
@@ -29,9 +27,7 @@ class ActivitiesTableViewController: UITableViewController {
         let textFieldCell = UINib(nibName: "ActivityTableViewCell",bundle: nil)
         self.activitiesTableView.register(textFieldCell, forCellReuseIdentifier: "activityCell")
     }
-    
-    // MARK: - Table view data source
-    
+        
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -47,10 +43,8 @@ class ActivitiesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let vc = DetailViewController()
         category = categories[indexPath.row]
         vcDetail.type = category
-//        vcDetail.participants = participants
         print("In tap tableview \(vcDetail.type) y participants \(vcDetail.participants)")
         self.navigationController?.pushViewController(vcDetail, animated: true)
     }

@@ -8,10 +8,7 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-//    var activitiesModel = ActivitiesModel()
-//    var homeVC = HomeViewController()
-//    var activitiesTableView = ActivitiesTableViewController()
-//    var activityCategory: ActivityType!
+
     var type: String = ""
     var participants: Int = 0
 
@@ -30,7 +27,6 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         showView()
-//        print(participants)
         }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +43,7 @@ class DetailViewController: UIViewController {
         self.participantsLabel.text = String(activity.participants)
         self.priceLabel.text = String(activity.price)
         self.linkLabel.text = activity.link
-        self.typeLabel.text = activity.type
+        self.typeLabel.text = "✅ " + activity.type
         if let accesibility = activity.accesibility {
             
             self.accesibilityLabel.text = String(accesibility)
@@ -80,7 +76,6 @@ class DetailViewController: UIViewController {
                     self.prepareUI()
                     print(activity)
                     self.showActivity(activity)
-                    
                 }
             })
         }
@@ -95,7 +90,6 @@ class DetailViewController: UIViewController {
                     self.prepareUI()
                     print(activity)
                     self.showActivity(activity)
-                    
                 }
             })
         }

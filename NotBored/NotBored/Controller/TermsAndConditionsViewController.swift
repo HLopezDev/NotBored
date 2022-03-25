@@ -11,8 +11,6 @@ class TermsAndConditionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
     }
 
     @IBAction func aceptarButton(_ sender: UIButton) {

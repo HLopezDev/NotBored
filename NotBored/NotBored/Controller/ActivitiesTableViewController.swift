@@ -39,8 +39,7 @@ class ActivitiesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = activitiesTableView.dequeueReusableCell(withIdentifier: "activityCell", for: indexPath) as! ActivityTableViewCell
-        cell.typeLabel.text = categories[indexPath.row]
-        
+        cell.typeLabel.text = categories[indexPath.row].capitalized
         return cell
     }
     

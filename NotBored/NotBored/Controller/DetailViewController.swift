@@ -36,6 +36,7 @@ class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ActivityData(participants: participants, type: type)
+        self.title = type.capitalized
     }
     
     @IBAction func tryAnotherButton(_ sender: Any) {

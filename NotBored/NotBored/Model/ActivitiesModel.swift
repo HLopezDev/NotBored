@@ -41,7 +41,7 @@ struct Activity: Decodable, Equatable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         activity = try values.decode(String.self, forKey: .activity)
         accesibility = try values.decodeIfPresent(Double.self, forKey: .accesibility)
-        type = try values.decode(String.self, forKey: .type)
+        type = try values.decode(String.self, forKey: .type).capitalized
         participants = try values.decode(Int.self, forKey: .participants)
         let temPrice = try values.decode(Double.self, forKey: .price)
         link = try values.decodeIfPresent(String.self, forKey: .link)

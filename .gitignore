@@ -1,0 +1,6 @@
+#.gitignore
+
+
+
+pods/ 
+.DS_Store

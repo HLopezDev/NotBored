@@ -13,33 +13,29 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var participantsTextField: UITextField!
     
-       
+    var vc: ActivitiesTableViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
         participantsTextField.delegate = self
+        participantsTextField.text = ""
         startButton.isEnabled = false
-                
         
     }
 
-        // Do any additional setup after loading the view.
-    
-    
     @IBAction func textFieldChanged(_ sender: UITextField) {
         startButton.isEnabled = participantsTextField.hasText
     }
-    
-    
-    
-    @IBAction func startButton(_ sender: Any) {
-        let vc = ActivitiesTableViewController()
-        vc.participants = getParticipants()
-        navigationController?.pushViewController(vc, animated: true)
 
+    @IBAction func startButton(_ sender: Any) {
+        vc = ActivitiesTableViewController()
+        vc.vcDetail = DetailViewController()
+        getParticipants()
+        print("In startButtonPress\(participantsTextField.text ?? "fallo" )")
+        navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     @IBAction func termsAndConditionsButton(_ sender: UIButton) {
@@ -47,9 +43,12 @@ class HomeViewController: UIViewController {
         self.present(vc, animated: true)
     }
     
-    func getParticipants() -> Int {
+    func getParticipants() {
         let numero = participantsTextField.text ?? "0"
-        return Int(numero) ?? 0
+        vc.vcDetail.participants = Int(numero) ?? 0
+        return
+//        return Int(numero) ?? 0
+//        return 1
     }
     
     func doValidation() {
@@ -57,7 +56,6 @@ class HomeViewController: UIViewController {
             startButton.isEnabled = true
         }
     }
-
 }
 
 extension HomeViewController: UITextFieldDelegate {

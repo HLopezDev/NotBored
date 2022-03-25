@@ -21,7 +21,7 @@ class ActivityTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func update(activity: Activity){
-        typeLabel.text = activity.type
-    }
+//    func update(activity: Activity){
+//        typeLabel.text = activity.type
+//    }
 }

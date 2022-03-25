@@ -17,8 +17,11 @@ class ActivitiesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let shuffleImage = UIImage(systemName: "shuffle")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: shuffleImage, style: .plain, target: self, action: #selector(self.randomActivity))
         registerTableViewCells()
         categories = ActivitiesModel.getCategory()
+        self.title = "Activities"
         print("In Detail viewdidload \(vcDetail.participants)")
     }
     
@@ -49,6 +52,10 @@ class ActivitiesTableViewController: UITableViewController {
         vcDetail.type = category
 //        vcDetail.participants = participants
         print("In tap tableview \(vcDetail.type) y participants \(vcDetail.participants)")
+        self.navigationController?.pushViewController(vcDetail, animated: true)
+    }
+    
+    @objc func randomActivity() {
         self.navigationController?.pushViewController(vcDetail, animated: true)
     }
 }

@@ -22,6 +22,18 @@ class DataService {
             return completion(.success(activity))
         }
     }
+    
+    static func getRandomData(_ participants: Int,  completion: @escaping (Result<Activity, NetworkError>) -> Void) {
+        let url: String = "https://www.boredapi.com/api/activity?participants=\(participants)"
+        let request = AF.request(url)
+        request.responseDecodable(of: Activity.self) { (response) in
+            guard let activity = response.value else {
+                return completion(.failure(.badDecodable))
+            }
+            print("In get Data \(activity)")
+            return completion(.success(activity))
+        }
+    }
 }
 
 enum NetworkError: Error {

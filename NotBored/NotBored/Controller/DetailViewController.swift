@@ -29,18 +29,18 @@ class DetailViewController: UIViewController {
        
     override func viewDidLoad() {
         super.viewDidLoad()
-        ActivityData(participants: participants, type: type)
+        showView()
 //        print(participants)
         }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ActivityData(participants: participants, type: type)
+        showView()
         self.title = type.capitalized
     }
     
     @IBAction func tryAnotherButton(_ sender: Any) {
-        ActivityData(participants: participants, type: type)
+        showView()
     }
 
     func showActivity(_ activity: Activity) {
@@ -71,7 +71,7 @@ class DetailViewController: UIViewController {
         self.priceTitleLabel.isHidden = true
     }
     
-    func ActivityData(participants: Int, type: String) {
+    func activityData(participants: Int, type: String) {
         DataService.getData(participants, type: type, completion: { result in
                 switch result {
                 case .failure(let error):
@@ -86,6 +86,23 @@ class DetailViewController: UIViewController {
             })
         }
     
+    func randomActivityData(_ participants: Int) {
+        DataService.getRandomData(participants, completion: { result in
+                switch result {
+                case .failure(let error):
+                    self.noActivityAvailable()
+                    print(error)
+                case .success(let activity):
+                    self.prepareUI()
+                    print(activity)
+                    self.showActivity(activity)
+                    
+                }
+            })
+        }
+    
+    
+    
     func prepareUI() {
         self.participantsLabel.isHidden = false
         self.priceLabel.isHidden = false
@@ -95,5 +112,14 @@ class DetailViewController: UIViewController {
         self.accesibilityTitleLabel.isHidden = false
         self.participantsTitleLabel.isHidden = false
         self.priceTitleLabel.isHidden = false
+    }
+    
+    func showView() {
+        if type == "" {
+            self.title = "Random"
+            randomActivityData(participants)
+        } else {
+            activityData(participants: participants, type: type)
+        }
     }
 }

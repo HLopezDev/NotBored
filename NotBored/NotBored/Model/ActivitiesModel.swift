@@ -23,7 +23,6 @@ class ActivitiesModel {
         case relaxation = "relaxation"
         case music = "music"
         case busywork = "busywork"
-        case random = "random"
     }
 }
 

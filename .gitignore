@@ -1,6 +1,5 @@
 #.gitignore
 
-
-
 pods/ 
 .DS_Store
+*.xcuserstate

@@ -36,7 +36,6 @@ class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         showView()
-        self.title = type.capitalized
     }
     
     @IBAction func tryAnotherButton(_ sender: Any) {
@@ -119,6 +118,7 @@ class DetailViewController: UIViewController {
             self.title = "Random"
             randomActivityData(participants)
         } else {
+            self.title = type.capitalized
             activityData(participants: participants, type: type)
         }
     }

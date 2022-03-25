@@ -56,6 +56,7 @@ class ActivitiesTableViewController: UITableViewController {
     }
     
     @objc func randomActivity() {
+        vcDetail.type = ""
         self.navigationController?.pushViewController(vcDetail, animated: true)
     }
 }

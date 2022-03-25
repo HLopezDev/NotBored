@@ -22,7 +22,6 @@ class HomeViewController: UIViewController {
         participantsTextField.delegate = self
         participantsTextField.text = ""
         startButton.isEnabled = false
-        
     }
 
     @IBAction func textFieldChanged(_ sender: UITextField) {
